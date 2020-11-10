@@ -1,0 +1,12 @@
+--- .env/lib/python3.8/site-packages/download_youtube_subtitle/main.py	2020-11-10 22:42:50.107235030 +0000
++++ main_2.py	2020-11-10 22:45:20.930742923 +0000
+@@ -288,7 +288,8 @@
+ 
+     pfile = partial(print, file=f)
+     pfile(video_link, file=f)
+-    for sent in merged_subtitle:
++    sent_subtitle = merged_subtitle if merged_subtitle else subtitle
++    for sent in sent_subtitle:
+         each_sent(sent, file=f)
+         pfile()
+ 
