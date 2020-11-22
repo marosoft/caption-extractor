@@ -46,14 +46,16 @@ if __name__ == "__main__":
         print('=='*20)
         print(f'getting {count} of {maxx} : {video["videoID"]}')
         print('=='*20)
+        videos_titles += f'{video["videoID"]}:{video["title"]}\n'
         if video["videoID"] + '.txt' in already_processed:
             print('Already processed. Skipping...')
         else:
             try:
                 print(f'Video ID: {video["videoID"]}; Title: {video["title"]}')
-                videos_titles += f'{video["videoID"]}:{video["title"]}\n'
                 # print(f'Title using lib: {get_title_using_lib(video["videoID"])}')
                 main(video["videoID"], translation=False, output_file=f'{os.path.join(path_captions, video["videoID"])}.txt')
+                if not os.path.isfile(f'{os.path.join(path_captions, video["videoID"])}.txt'):
+                    raise Exception('not_saved')
             except:
                 failed_videos += f'failed to download: {video["videoID"]}\n'
                 print(f'failed to download: {video["videoID"]}\n')
