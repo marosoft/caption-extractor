@@ -1,11 +1,26 @@
---- .env/lib/python3.8/site-packages/download_youtube_subtitle/main.py	2020-11-10 22:42:50.107235030 +0000
-+++ main_2.py	2020-11-10 22:45:20.930742923 +0000
-@@ -288,7 +288,8 @@
+--- .env/lib/python3.8/site-packages/download_youtube_subtitle/main.py	2020-11-22 16:16:43.849344341 +0000
++++ main_my.py	2020-11-22 16:16:20.150153525 +0000
+@@ -253,6 +253,7 @@
+     _parseTranscript = partial(parseTranscript, remove_font_tag=remove_font_tag)
+ 
+     subtitle = _parseTranscript(transcript, )
++    sent_subtitle = subtitle
+ 
+     output_json = { "original": subtitle }
+ 
+@@ -261,6 +262,7 @@
+         transcript = requests.get(baseUrl)
+         subtitle_cn = _parseTranscript(transcript)
+         merged_subtitle = merge_subtitle(subtitle, subtitle_cn)
++        sent_subtitle = merged_subtitle
+         output_json = {
+                  "original": subtitle,
+                  "translation":subtitle_cn,
+@@ -288,7 +290,7 @@
  
      pfile = partial(print, file=f)
      pfile(video_link, file=f)
 -    for sent in merged_subtitle:
-+    sent_subtitle = merged_subtitle if merged_subtitle else subtitle
 +    for sent in sent_subtitle:
          each_sent(sent, file=f)
          pfile()
