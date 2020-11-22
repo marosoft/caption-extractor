@@ -8,6 +8,8 @@ This the YouTube Playlist: https://www.youtube.com/playlist?list=PLkVbIsAWN2lsHd
 
 # Usage
 
+## Local
+
 Set env vars:
 ```bash
 CAPTIONS_REPO=https://github.com/marosoft/youtube-captions.git
@@ -18,7 +20,19 @@ GOOGLE_API_KEY=[YOUR_API_KEY]
 Invoke the script:
 `./process-new-videos.sh`
 
+## Docker
 
+Build image:
+
+```bash
+docker build -t caption-extractor .
+```
+
+Run:
+
+```bash
+docker run -t --env CAPTIONS_REPO=github.com/[username]/youtube-captions.git --env GIT_USERNAME=[username] --env GIT_TOKEN=[git_token] --env GIT_EMAIL=[email] --env GOOGLE_API_KEY=[google_api_key] caption-extractor
+```
 
 # Dev Setup
 
