@@ -11,7 +11,13 @@ This the YouTube Playlist: https://www.youtube.com/playlist?list=PLkVbIsAWN2lsHd
 ## Docker - official image
 
 ```bash
-docker run -t --env CAPTIONS_REPO=github.com/[username]/youtube-captions.git --env GIT_USERNAME=[username] --env GIT_TOKEN=[git_token] --env GIT_EMAIL=[email] --env GOOGLE_API_KEY=[google_api_key] repairmanual/caption-extractor:latest
+docker run -t \
+--env CAPTIONS_REPO=github.com/[username]/youtube-captions.git \
+--env GIT_USERNAME=[username] \
+--env GIT_TOKEN=[git_token] \
+--env GIT_EMAIL=[email] \
+--env GOOGLE_API_KEY=[google_api_key] \
+repairmanual/caption-extractor:latest
 ```
 
 ## Local
@@ -39,7 +45,13 @@ docker build -t caption-extractor .
 Run:
 
 ```bash
-docker run -t --env CAPTIONS_REPO=github.com/[username]/youtube-captions.git --env GIT_USERNAME=[username] --env GIT_TOKEN=[git_token] --env GIT_EMAIL=[email] --env GOOGLE_API_KEY=[google_api_key] caption-extractor
+docker run -t \
+--env CAPTIONS_REPO=github.com/[username]/youtube-captions.git \
+--env GIT_USERNAME=[username] \
+--env GIT_TOKEN=[git_token] \
+--env GIT_EMAIL=[email] \
+--env GOOGLE_API_KEY=[google_api_key] \
+caption-extractor
 ```
 
 # Dev Setup
