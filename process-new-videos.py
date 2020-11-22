@@ -36,6 +36,7 @@ if __name__ == "__main__":
     count = 0
     maxx = len(videos)
     videos_titles = ''
+    failed_videos = ''
 
     os.makedirs(path_captions, exist_ok=True)
     already_processed = os.listdir(path_captions)
@@ -54,9 +55,10 @@ if __name__ == "__main__":
                 # print(f'Title using lib: {get_title_using_lib(video["videoID"])}')
                 main(video["videoID"], translation=False, output_file=f'{os.path.join(path_captions, video["videoID"])}.txt')
             except:
-                with open(os.path.join(path, 'fails.txt'),'a') as f:
-                    f.write(f'failed to download: {video["videoID"]}\n')
+                failed_videos += f'failed to download: {video["videoID"]}\n'
                 print(f'failed to download: {video["videoID"]}\n')
 
     with open(os.path.join(path, 'titles.txt'),'w') as f:
-                    f.write(videos_titles)
+        f.write(videos_titles)
+    with open(os.path.join(path, 'fails.txt'),'w') as f:
+        f.write(failed_videos)
