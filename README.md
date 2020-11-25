@@ -11,7 +11,7 @@ This the YouTube Playlist: https://www.youtube.com/playlist?list=PLkVbIsAWN2lsHd
 ## Docker - official image
 
 ```bash
-docker run -t \
+docker run --rm -t \
 --env CAPTIONS_REPO=github.com/[username]/youtube-captions.git \
 --env GIT_USERNAME=[username] \
 --env GIT_TOKEN=[git_token] \
@@ -45,7 +45,7 @@ docker build -t caption-extractor .
 Run:
 
 ```bash
-docker run -t \
+docker run --rm -t \
 --env CAPTIONS_REPO=github.com/[username]/youtube-captions.git \
 --env GIT_USERNAME=[username] \
 --env GIT_TOKEN=[git_token] \
