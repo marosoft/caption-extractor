@@ -8,9 +8,6 @@ set -euo pipefail
 
 git clone --depth 1 https://${GIT_USERNAME}:${GIT_TOKEN}@${CAPTIONS_REPO} ${REPO_PATH} -b master
 
-# Activate
-source $ENV_PATH/bin/activate
-
 python process-new-videos.py -p PLkVbIsAWN2lsHdY7ldAAgtJug50pRNQv0 -o ${REPO_PATH}
 
 export SCRIPT_PWD=$PWD

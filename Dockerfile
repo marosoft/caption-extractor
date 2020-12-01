@@ -7,7 +7,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-ENV ENV_PATH=.env
 ENV REPO_PATH=repo
 
 ENV CAPTIONS_REPO=github.com/marosoft/caption-extractor.git
@@ -23,10 +22,7 @@ RUN ./install-packages.sh
 
 # Add pip requirements
 ADD requirements.txt .
-ADD download_youtube_subtitle.patch .
-
-COPY create-python-env.sh .
-RUN ./create-python-env.sh
+RUN python -m pip install -r requirements.txt
 
 ADD . /app
 
